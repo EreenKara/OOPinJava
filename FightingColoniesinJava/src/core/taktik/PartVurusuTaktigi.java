@@ -1,0 +1,37 @@
+/**
+*
+* @author Eren Kara errennkaaraa@hotmail.com
+* @since 25.05.2023
+* <p>
+* ITaktik arayuzunden implemente edilen Part Vurusu taktigi gerceklemesi.
+* </p>
+*/
+
+
+package core.taktik;
+
+import interfaces.taktik.ITaktik;
+import interfaces.topluluk.ITopluluk;
+
+public class PartVurusuTaktigi implements ITaktik{
+
+	/**
+	 * Tarihteki Part vurusu taktigini dusundum ve nasil bir savas gucu dondurmesi 
+	 * uygun olacaksa ona gore bir deger dondurdum.
+	 * @return geriye rastgele bir savas gucu donduruyor.
+	 */
+	@Override
+	public int savasGucu(ITopluluk topluluk) {
+		int savasGucu;
+		if(topluluk.getPopulasyon()<40 && topluluk.getYemekStogu()>topluluk.getPopulasyon()*0.6)
+		{
+			savasGucu=(int)((Math.random()*301 )+ 600); //600-900
+			topluluk.yemekTuket((long)(topluluk.getPopulasyon()*0.5));
+		}
+		else savasGucu=(int)((Math.random()*501 )+ 200); // 200-700
+		
+		
+		return savasGucu;
+	}
+
+}
